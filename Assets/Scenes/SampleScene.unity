@@ -588,7 +588,7 @@ MonoBehaviour:
     type: 3}
   metalBeam: {fileID: 3696010760073083631, guid: ad82e779260d43c4d8994a856beefeb9,
     type: 3}
-  spawnTime: 0.1
+  spawnTime: 0.05
 --- !u!4 &978640698
 Transform:
   m_ObjectHideFlags: 0
