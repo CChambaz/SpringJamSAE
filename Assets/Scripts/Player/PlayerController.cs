@@ -6,7 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed;
-
+    [SerializeField] private Animator animator;
+    [SerializeField] private bool isDead = false;
+    
     private Rigidbody rigid;
     private float currentSpeed = 0.0f;
 
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
+        animator.SetBool("dead", isDead);
     }
 
     void Move()
@@ -27,8 +30,9 @@ public class PlayerController : MonoBehaviour
 
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
-
+        
         movement *= playerSpeed;
         rigid.velocity = new Vector3(movement.x, rigid.velocity.y, movement.y);
+        animator.SetFloat("speed", Mathf.Abs(movement.magnitude));
     }
 }
