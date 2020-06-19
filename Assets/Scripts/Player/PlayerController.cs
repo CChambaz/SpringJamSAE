@@ -33,6 +33,6 @@ public class PlayerController : MonoBehaviour
         
         movement *= playerSpeed;
         rigid.velocity = new Vector3(movement.x, rigid.velocity.y, movement.y);
-        animator.SetFloat("speed", Mathf.Abs(movement.magnitude));
+        animator.SetFloat("speed", movement.y);
     }
 }
