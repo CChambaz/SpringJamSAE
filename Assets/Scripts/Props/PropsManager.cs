@@ -7,10 +7,10 @@ public class PropsManager : MonoBehaviour
 
     public float propsSpeed = 3f;
 
-    [SerializeField] private Vector3 spawnPosition;
+    [SerializeField] public Vector3 spawnPosition;
 
-    [SerializeField] private float spawnXMin;
-    [SerializeField] private float spawnXMax;
+    [SerializeField] public float spawnXMin;
+    [SerializeField] public float spawnXMax;
 
     [SerializeField] private GameObject woodenBox;
     [SerializeField] private GameObject metalBeam;
