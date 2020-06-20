@@ -4781,6 +4781,7 @@ GameObject:
   - component: {fileID: 3931862405730154808}
   - component: {fileID: 3931862405730154809}
   - component: {fileID: 502225653096075976}
+  - component: {fileID: 1892955941209134291}
   m_Layer: 0
   m_Name: BonusHurrican
   m_TagString: Item
@@ -4845,6 +4846,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusType: 1
+--- !u!114 &1892955941209134291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931862405730154810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f37e7fde2af15f4db2de26caa039b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zSpeed: 6
+  propRigidbody: {fileID: 3931862405730154809}
+  deleteY: 10
 --- !u!1001 &7942527175230805306
 PrefabInstance:
   m_ObjectHideFlags: 0
