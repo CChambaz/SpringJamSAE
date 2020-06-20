@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionZone: {fileID: 7716355819279760127}
+  life: 10
 --- !u!1001 &413046927900175644
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,14 +19,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigid;
     private float currentSpeed = 0.0f;
 
-    private int score = 0;
-    private int hurricanUsage = 0;
+    public int score = 0;
+    public int hurricanUsage = 0;
     public PlayerState playerState = PlayerState.NONE;
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        GameManager.gameManagerInstance.player = this;
     }
 
     // Update is called once per frame
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerState = PlayerState.HURRICANE;
                 animator.SetTrigger("hurricane");
+                SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.POWER_UP, SoundManager.AudioMixerGroup.PLAYER);
                 hurricanUsage--;
             }
             
@@ -80,7 +82,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-
         if (other.gameObject.tag == "Generator")
         {
             if (score > 0)

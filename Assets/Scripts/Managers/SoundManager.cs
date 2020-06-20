@@ -22,6 +22,10 @@ public class SoundManager : MonoBehaviour
         FIRE,
         WOOD_IMPACT,
         STEEL_IMPACT,
+        TRASH_IMPACT,
+        GENE_DAMAGE,
+        GENE_DESTROY,
+        POWER_UP,
         CONVEYORBELT,
         DEATH,
         MENU_SELECTION,
@@ -54,7 +58,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip fireClip;
     [SerializeField] AudioClip[] woodImpactClip;
     [SerializeField] AudioClip[] steelImpactClip;
+    [SerializeField] AudioClip[] trashImpactClip;
     [SerializeField] AudioClip conveyorBeltclip;
+    [SerializeField] AudioClip geneDamageClip;
+    [SerializeField] AudioClip geneDestroyClip;
+    [SerializeField] AudioClip powerUpClip;
     [SerializeField] AudioClip[] deathClips;
     [SerializeField] AudioClip menuSelection;
     [SerializeField] AudioClip menuValidation;
@@ -103,6 +111,13 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void StopAllSounds()
+    {
+        foreach (AudioSource audioSource in emitters)
+        {
+            audioSource.Stop();
+        }
+    }
     public void PlaySound(SoundList sound, AudioMixerGroup group, float timeToLoop = 0.0f, bool infiniteLoop = false)
     {
         AudioSource emitterAvailable = null;
@@ -136,8 +151,24 @@ public class SoundManager : MonoBehaviour
                     emitterAvailable.clip = steelImpactClip[Random.Range(0, steelImpactClip.Length - 1)];
                     break;
 
+                case SoundList.TRASH_IMPACT:
+                    emitterAvailable.clip = trashImpactClip[Random.Range(0, trashImpactClip.Length - 1)];
+                    break;
+                
                 case SoundList.CONVEYORBELT:
                     emitterAvailable.clip = conveyorBeltclip;
+                    break;
+                
+                case SoundList.GENE_DAMAGE:
+                    emitterAvailable.clip = geneDamageClip;
+                    break;
+                
+                case SoundList.GENE_DESTROY:
+                    emitterAvailable.clip = geneDestroyClip;
+                    break;
+                
+                case SoundList.POWER_UP:
+                    emitterAvailable.clip = powerUpClip;
                     break;
                 
                 case SoundList.DEATH:
