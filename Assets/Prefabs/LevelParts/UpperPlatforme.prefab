@@ -113,9 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patterns:
-  - {fileID: 6985012974811276368, guid: 35a50b570872c0a4097c161aab09fbf3, type: 3}
-  - {fileID: 6985012974811276368, guid: 35a50b570872c0a4097c161aab09fbf3, type: 3}
-  - {fileID: 6985012974811276368, guid: 35a50b570872c0a4097c161aab09fbf3, type: 3}
+  - {fileID: 8296395634324560111, guid: 35a50b570872c0a4097c161aab09fbf3, type: 3}
+  - {fileID: 8296395634324560111, guid: 35a50b570872c0a4097c161aab09fbf3, type: 3}
+  - {fileID: 8296395634324560111, guid: 35a50b570872c0a4097c161aab09fbf3, type: 3}
   spawnPosition: {fileID: 4846543286866565667}
 --- !u!65 &7462944648921755684
 BoxCollider:
@@ -450,7 +450,6 @@ GameObject:
   - component: {fileID: 1105606867198441944}
   - component: {fileID: 8325546841403981816}
   - component: {fileID: 7645239016828746307}
-  - component: {fileID: 893631370882073396}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -519,17 +518,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &893631370882073396
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196785183792474236}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
