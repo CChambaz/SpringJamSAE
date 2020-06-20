@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
         NONE,
         HURRICANE
     }
-    
+
+    [SerializeField] private float propsZSpeed;
     [SerializeField] private float playerSpeed;
     [SerializeField] private Animator animator;
     [SerializeField] public bool isDead = false;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,7 +44,11 @@ public class PlayerController : MonoBehaviour
             }
             
             Move();
+
+            //Set the velocity of the
+            rigid.velocity = new Vector3(rigid.velocity.x, rigid.velocity.y, rigid.velocity.z - propsZSpeed);
         }
+
     }
 
     void Move()
@@ -69,6 +75,23 @@ public class PlayerController : MonoBehaviour
             isDead = true;
             SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.DEATH, SoundManager.AudioMixerGroup.PLAYER);
         }
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.gameObject.tag == "Generator")
+        {
+            if (score > 0)
+            {
+                if (Input.GetButtonDown("GeneratorInterraction"))
+                {
+                    other.gameObject.GetComponentInParent<Generator>().PlayerHasInterracted();
+                    score -= 1;
+                }
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -89,5 +112,6 @@ public class PlayerController : MonoBehaviour
             
             Destroy(bonus.gameObject);
         }
+
     }
 }
