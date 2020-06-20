@@ -8,6 +8,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Vector2 cylinderAmount;
     [SerializeField] private Vector2 cylinderOffset;
     [SerializeField] private Vector2 upperPlaformeOffset;
+    [SerializeField] private Vector2 spawnerGridSize;
     [SerializeField] private PropsManager propsManager;
     [SerializeField] private GameObject cylinderPrefab;
     [SerializeField] private GameObject sidePrefab;
@@ -16,6 +17,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private GameObject deadZonePrefab;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject particlePrefab;
+    [SerializeField] private GameObject spawnerPrefab;
 
     private Vector3 currentPosition = Vector3.zero;
     
@@ -32,10 +34,10 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void GenerateMap()
     {
-        // Spawn the dead zone
-        GameObject deadZone = Instantiate(deadZonePrefab, new Vector3(0, 5, 0), Quaternion.identity);
-        deadZone.transform.localScale = new Vector3(mapSize + 2 * cylinderPrefab.transform.localScale.y, 10, 0.25f);
-        
+        // Spawn the back dead zone
+        Vector3 deadZoneScale = new Vector3(mapSize + 2 * cylinderPrefab.transform.localScale.y, 10, 0.25f);
+        Instantiate(deadZonePrefab, new Vector3(0, 5, 0), Quaternion.identity).transform.localScale = deadZoneScale;
+
         // Spawn the collider of the convoyer
         Vector3 convoyerCenter = new Vector3(0, 0, ((cylinderPrefab.transform.localScale.y + cylinderOffset.y) * cylinderAmount.y) / 4);
         GameObject convoyer = Instantiate(convoyerColliderPrefab, convoyerCenter, Quaternion.identity);
@@ -57,14 +59,17 @@ public class LevelGenerator : MonoBehaviour
             currentPosition.z += cylinderOffset.y;
         }
 
+        // Spawn the front dead zone
+        //Instantiate(deadZonePrefab, new Vector3(0, 5, currentPosition.z), Quaternion.identity).transform.localScale = deadZoneScale;
+        
         // Apply upper platforme offset (x = z, y = y)
         currentPosition.z += upperPlaformeOffset.x + (upperPlatformePrefab.transform.localScale.z / 2.0f);
-        currentPosition.y += upperPlaformeOffset.y;
+        //currentPosition.y += upperPlaformeOffset.y;
         
         // Spawn the upper platforme
-        GameObject upperPlatforme = Instantiate(upperPlatformePrefab, currentPosition, Quaternion.identity);
-        Vector3 upperPlatformeScaleMultiplier = new Vector3(mapSize, 1, 1);
-        upperPlatforme.transform.localScale = Vector3.Scale(upperPlatforme.transform.localScale, upperPlatformeScaleMultiplier);
+        /*GameObject upperPlatforme = */Instantiate(upperPlatformePrefab, currentPosition, upperPlatformePrefab.transform.rotation);
+        /*Vector3 upperPlatformeScaleMultiplier = new Vector3(mapSize, 1, 1);
+        upperPlatforme.transform.localScale = Vector3.Scale(upperPlatforme.transform.localScale, upperPlatformeScaleMultiplier);*/
         
         // Set props manager values
         propsManager.spawnXMin = -mapSize / 2;
@@ -74,6 +79,7 @@ public class LevelGenerator : MonoBehaviour
         // Player spawn
         convoyerCenter.y += 1;
         Instantiate(playerPrefab, convoyerCenter, Quaternion.identity);
+        //Todo Link player to camera
 
         // Spawn the particles
         /*convoyerCenter.y -= 10;

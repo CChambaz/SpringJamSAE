@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float propsZSpeed;
     [SerializeField] private float playerSpeed;
     [SerializeField] private Animator animator;
-    [SerializeField] private bool isDead = false;
+    [SerializeField] public bool isDead = false;
     
     private Rigidbody rigid;
     private float currentSpeed = 0.0f;

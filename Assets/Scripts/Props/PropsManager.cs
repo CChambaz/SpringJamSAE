@@ -22,7 +22,7 @@ public class PropsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSpawnTime += Time.deltaTime;
+        /*currentSpawnTime += Time.deltaTime;
         if (currentSpawnTime >= spawnTime)
         {
             float random = Random.Range(0, 2);
@@ -36,6 +36,6 @@ public class PropsManager : MonoBehaviour
             }
 
             currentSpawnTime = 0;
-        }
+        }*/
     }
 }
