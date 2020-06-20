@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Box001Mat
-    second: {fileID: 2100000, guid: 48e44d403fe3ae44bb4cbc89a38cfd03, type: 2}
+    second: {fileID: 2100000, guid: 600506c5ea90901498470b7159806b01, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -39,7 +39,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.012
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -86,7 +86,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.012
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

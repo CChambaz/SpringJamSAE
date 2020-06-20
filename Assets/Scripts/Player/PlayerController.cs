@@ -5,12 +5,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerState
+    {
+        NONE,
+        HURRICANE
+    }
+    
     [SerializeField] private float playerSpeed;
     [SerializeField] private Animator animator;
     [SerializeField] public bool isDead = false;
     
     private Rigidbody rigid;
     private float currentSpeed = 0.0f;
+
+    private int score = 0;
+    private int hurricanUsage = 0;
+    public PlayerState playerState = PlayerState.NONE;
 
     private void Start()
     {
@@ -24,6 +34,13 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("dead", isDead);
         else
         {
+            if (hurricanUsage > 0 && Input.GetButton("Fire2"))
+            {
+                playerState = PlayerState.HURRICANE;
+                animator.SetTrigger("hurricane");
+                hurricanUsage--;
+            }
+            
             Move();
         }
     }
@@ -40,12 +57,37 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("speed", movement.y);
     }
 
+    private void EndHurricane()
+    {
+        playerState = PlayerState.NONE;
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Finish")
         {
             isDead = true;
             SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.DEATH, SoundManager.AudioMixerGroup.PLAYER);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Item")
+        {
+            Bonus bonus = other.gameObject.GetComponent<Bonus>();
+
+            switch (bonus.bonusType)
+            {
+                case Bonus.BonusType.OBJECTIVE:
+                    score++;
+                    break;
+                case Bonus.BonusType.HURRICAN_BEER:
+                    hurricanUsage++;
+                    break;
+            }
+            
+            Destroy(bonus.gameObject);
         }
     }
 }
