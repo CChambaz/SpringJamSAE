@@ -50,6 +50,7 @@ MonoBehaviour:
   woodImpactClip:
   - {fileID: 8300000, guid: 2152c639c1f57db4d9ec2e955c950f11, type: 3}
   - {fileID: 8300000, guid: 64f1686ccb98d2a4a829c3393b192994, type: 3}
+  woodDestroyClip: {fileID: 8300000, guid: 780f1b0c0cbf90640b78b3162f235731, type: 3}
   steelImpactClip:
   - {fileID: 8300000, guid: 0723380cc04a59b428e09d447e6c9c37, type: 3}
   - {fileID: 8300000, guid: 3f3026b29ea99cd4bbecdfb557115a9f, type: 3}
@@ -62,6 +63,7 @@ MonoBehaviour:
   geneDamageClip: {fileID: 8300000, guid: 13902262ab68f91449eeb4b40dbf6ba4, type: 3}
   geneDestroyClip: {fileID: 8300000, guid: c8c3a3ee0f5690a41b4aee03dab21530, type: 3}
   powerUpClip: {fileID: 8300000, guid: 0e55b62e612c518429c97667768b01ae, type: 3}
+  pickupClip: {fileID: 8300000, guid: 58f8b563327748c4092c09e4f7919687, type: 3}
   deathClips:
   - {fileID: 8300000, guid: dfb015c57211a4b4aab1f40ba8110fed, type: 3}
   menuSelection: {fileID: 0}
@@ -87,3 +89,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generators: 0
+  player: {fileID: 0}

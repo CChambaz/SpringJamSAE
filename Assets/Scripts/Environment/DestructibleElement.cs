@@ -9,8 +9,11 @@ public class DestructibleElement : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if(other.gameObject.GetComponent<PlayerController>().playerState == PlayerController.PlayerState.HURRICANE)
+            if (other.gameObject.GetComponent<PlayerController>().playerState == PlayerController.PlayerState.HURRICANE)
+            {
+                SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.WOOD_DESTROY, SoundManager.AudioMixerGroup.ENVIRONMENT);
                 Destroy(gameObject);
+            }
         }
     }
 }

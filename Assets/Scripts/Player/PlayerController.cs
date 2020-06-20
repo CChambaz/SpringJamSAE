@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
             
+            SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.PICK_UP, SoundManager.AudioMixerGroup.PLAYER);
             Destroy(bonus.gameObject);
         }
 

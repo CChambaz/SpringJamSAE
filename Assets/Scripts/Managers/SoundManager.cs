@@ -21,11 +21,13 @@ public class SoundManager : MonoBehaviour
         RUN,
         FIRE,
         WOOD_IMPACT,
+        WOOD_DESTROY,
         STEEL_IMPACT,
         TRASH_IMPACT,
         GENE_DAMAGE,
         GENE_DESTROY,
         POWER_UP,
+        PICK_UP,
         CONVEYORBELT,
         DEATH,
         MENU_SELECTION,
@@ -57,12 +59,14 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip[] runClips;
     [SerializeField] AudioClip fireClip;
     [SerializeField] AudioClip[] woodImpactClip;
+    [SerializeField] AudioClip woodDestroyClip;
     [SerializeField] AudioClip[] steelImpactClip;
     [SerializeField] AudioClip[] trashImpactClip;
     [SerializeField] AudioClip conveyorBeltclip;
     [SerializeField] AudioClip geneDamageClip;
     [SerializeField] AudioClip geneDestroyClip;
     [SerializeField] AudioClip powerUpClip;
+    [SerializeField] AudioClip pickupClip;
     [SerializeField] AudioClip[] deathClips;
     [SerializeField] AudioClip menuSelection;
     [SerializeField] AudioClip menuValidation;
@@ -169,6 +173,14 @@ public class SoundManager : MonoBehaviour
                 
                 case SoundList.POWER_UP:
                     emitterAvailable.clip = powerUpClip;
+                    break;
+                
+                case SoundList.PICK_UP:
+                    emitterAvailable.clip = pickupClip;
+                    break;
+                
+                case SoundList.WOOD_DESTROY:
+                    emitterAvailable.clip = woodDestroyClip;
                     break;
                 
                 case SoundList.DEATH:
