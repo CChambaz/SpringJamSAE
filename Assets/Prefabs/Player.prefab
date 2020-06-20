@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce2f904b15befe408bf592b2165db37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 10
+  playerSpeed: 1
   animator: {fileID: 0}
   isDead: 0
   playerState: 0
