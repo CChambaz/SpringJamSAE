@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 705906356b687aa40af55384a6a46c4f
+guid: 67792ad6bb652c44fbf20e2d787da1ed
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Box002Mat
-    second: {fileID: 2100000, guid: 600506c5ea90901498470b7159806b01, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Box003Mat
-    second: {fileID: 2100000, guid: cc6a5adf382e03547aabd1f7a47dc05b, type: 2}
+      name: rouage_001Mat
+    second: {fileID: 2100000, guid: 5b5fd52be4b77404d985cc8692a360ea, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -54,7 +49,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     fileIdsGeneration: 2
-    swapUVChannels: 1
+    swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
