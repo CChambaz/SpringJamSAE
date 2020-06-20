@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigid;
     private float currentSpeed = 0.0f;
 
+    private int score = 0;
+    private int hurricanUsage = 0;
+
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
@@ -46,6 +49,23 @@ public class PlayerController : MonoBehaviour
         {
             isDead = true;
             SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.DEATH, SoundManager.AudioMixerGroup.PLAYER);
+        }
+
+        if (other.tag == "Item")
+        {
+            Bonus bonus = other.GetComponent<Bonus>();
+
+            switch (bonus.bonusType)
+            {
+                case Bonus.BonusType.OBJECTIVE:
+                    score++;
+                    break;
+                case Bonus.BonusType.HURRICAN_BEER:
+                    hurricanUsage++;
+                    break;
+            }
+            
+            Destroy(bonus.gameObject);
         }
     }
 }

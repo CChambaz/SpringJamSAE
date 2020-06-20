@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RollingCylinder : MonoBehaviour
+public class RotatingObject : MonoBehaviour
 {
-    [SerializeField] private float rotationSpeed;
+    [SerializeField] private Vector3 rotationSpeed;
 
     private Transform transform;
     
@@ -17,6 +17,6 @@ public class RollingCylinder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0,rotationSpeed,0);
+        transform.Rotate(rotationSpeed);
     }
 }
