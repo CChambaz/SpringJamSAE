@@ -60,7 +60,7 @@ ModelImporter:
       curves: []
       events:
       - time: 1
-        functionName: TestEvent
+        functionName: EndHurricane
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 9ce2f904b15befe408bf592b2165db37,
           type: 3}

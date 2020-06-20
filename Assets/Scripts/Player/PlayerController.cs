@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerState
+    {
+        NONE,
+        HURRICANE
+    }
+    
     [SerializeField] private float playerSpeed;
     [SerializeField] private Animator animator;
     [SerializeField] private bool isDead = false;
@@ -14,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private int score = 0;
     private int hurricanUsage = 0;
+    public PlayerState playerState = PlayerState.NONE;
 
     private void Start()
     {
@@ -29,6 +36,7 @@ public class PlayerController : MonoBehaviour
         {
             if (hurricanUsage > 0 && Input.GetButton("Fire2"))
             {
+                playerState = PlayerState.HURRICANE;
                 animator.SetTrigger("hurricane");
                 hurricanUsage--;
             }
@@ -49,10 +57,11 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("speed", movement.y);
     }
 
-    private void TestEvent()
+    private void EndHurricane()
     {
-        Debug.Log("Test success");
+        playerState = PlayerState.NONE;
     }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Finish")
