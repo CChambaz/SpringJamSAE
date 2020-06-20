@@ -74,6 +74,7 @@ public class LevelGenerator : MonoBehaviour
         // Player spawn
         convoyerCenter.y += 1;
         Instantiate(playerPrefab, convoyerCenter, Quaternion.identity);
+        //Todo Link player to camera
 
         // Spawn the particles
         /*convoyerCenter.y -= 10;
