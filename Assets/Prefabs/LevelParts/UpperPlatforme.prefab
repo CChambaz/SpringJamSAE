@@ -112,7 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887d9111bad9eee46be26084108c13c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patterns: []
+  patterns:
+  - {fileID: 6985012974811276368, guid: 35a50b570872c0a4097c161aab09fbf3, type: 3}
+  - {fileID: 6985012974811276368, guid: 35a50b570872c0a4097c161aab09fbf3, type: 3}
+  - {fileID: 6985012974811276368, guid: 35a50b570872c0a4097c161aab09fbf3, type: 3}
   spawnPosition: {fileID: 4846543286866565667}
 --- !u!65 &7462944648921755684
 BoxCollider:

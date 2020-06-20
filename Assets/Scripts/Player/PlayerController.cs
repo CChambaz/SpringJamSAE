@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
