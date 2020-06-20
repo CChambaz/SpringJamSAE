@@ -62,6 +62,7 @@ public class UIManager : MonoBehaviour
     
     public void LoadMenu()
     {
+        Time.timeScale = 1;
         GameManager.gameManagerInstance.UpdateGameState(GameManager.GameState.MENU);
     }
 
