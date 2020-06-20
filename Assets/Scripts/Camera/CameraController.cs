@@ -19,9 +19,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float distanceShake;
 
     //params Effect
-    private const float Z_ROT = 0.15f;
+    private const float Z_ROT = 0.3f;
     private const float MAX_Y = 0.8f;
-    private const float MAX_Z = 5;
+    private const float MAX_Z = 2;
+    private const float LIMIT_Z = 5;
 
     private void ShakingEffect(float power = 1.0f)
     {
@@ -57,14 +58,14 @@ public class CameraController : MonoBehaviour
                 Vector3 newPosition = new Vector3(target.position.x, target.position.y);
                 float power = 1.0f;
 
-                if (target.position.z <= MAX_Z)
+                if (target.position.z <= LIMIT_Z)
                 {
                     power = 4.5f;
                     if (transform.rotation.x <= Z_ROT)
                     {
                         transform.Rotate(Vector3.right, 1.5f);
                     }
-
+                        
                     if (positionYBord > MAX_Y)
                     {
                         positionYBord += -1 * Time.deltaTime * 2.5f;
@@ -76,17 +77,20 @@ public class CameraController : MonoBehaviour
                 else
                 {
                     float velocity_z = target.gameObject.GetComponent<Rigidbody>().velocity.z;
-                    if (positionZBord <= MAX_Z && velocity_z > 0)
+                    if (positionZBord <= LIMIT_Z && velocity_z > 0)
                     {
-                        positionZBord += Time.deltaTime * 2.0f;
+                        if(positionZBord < MAX_Z)
+                            positionZBord += Time.deltaTime * 2.0f;
                     }
                     else
                     {
                         if (positionZBord > 0.0f)
+                        {
                             positionZBord -= Time.deltaTime * 2.0f;
+                        }
                     }
 
-                    if (transform.rotation.x > 0.0f)
+                    if (transform.rotation.x > 0.045f)
                     {
                         transform.Rotate(Vector3.left, 0.5f);
                     }

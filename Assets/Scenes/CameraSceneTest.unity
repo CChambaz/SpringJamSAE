@@ -1630,8 +1630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034dd4bddc0907f418ddc8d43f33241b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionOffset: {x: 0, y: 3, z: -10}
-  rotationOffset: {x: 0, y: 0, z: 0, w: 0}
+  positionOffset: {x: 0, y: 5, z: -10}
+  rotationOffset: {x: 0.1, y: 0, z: 0, w: 2}
   isReady: 1
   velocityShake: 35
   distanceShake: 0.003
