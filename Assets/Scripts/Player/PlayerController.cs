@@ -50,10 +50,13 @@ public class PlayerController : MonoBehaviour
             isDead = true;
             SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.DEATH, SoundManager.AudioMixerGroup.PLAYER);
         }
+    }
 
-        if (other.tag == "Item")
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Item")
         {
-            Bonus bonus = other.GetComponent<Bonus>();
+            Bonus bonus = other.gameObject.GetComponent<Bonus>();
 
             switch (bonus.bonusType)
             {
