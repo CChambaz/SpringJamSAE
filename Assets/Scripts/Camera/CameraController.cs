@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         if (target == null)
@@ -63,15 +63,15 @@ public class CameraController : MonoBehaviour
                     power = 4.5f;
                     if (transform.rotation.x <= Z_ROT)
                     {
-                        transform.Rotate(Vector3.right, 1.5f);
+                        transform.Rotate(Vector3.right, 2.0f);
                     }
                         
                     if (positionYBord > MAX_Y)
                     {
-                        positionYBord += -1 * Time.deltaTime * 2.5f;
+                        positionYBord += -1 * Time.deltaTime * 2.0f;
                     }
 
-                    newPosition += new Vector3(0, positionYBord + positionOffset.y, -4);
+                    newPosition += new Vector3(0, positionYBord + positionOffset.y, -LIMIT_Z);
                     positionZBord = 0.0f;
                 }
                 else
