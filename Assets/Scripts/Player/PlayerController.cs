@@ -27,6 +27,12 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("dead", isDead);
         else
         {
+            if (hurricanUsage > 0 && Input.GetButton("Fire2"))
+            {
+                animator.SetTrigger("hurricane");
+                hurricanUsage--;
+            }
+            
             Move();
         }
     }
@@ -43,6 +49,10 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("speed", movement.y);
     }
 
+    private void TestEvent()
+    {
+        Debug.Log("Test success");
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Finish")
