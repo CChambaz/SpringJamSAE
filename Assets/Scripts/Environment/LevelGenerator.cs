@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] private float mapSize;
+    [SerializeField] public float mapSize;
     [SerializeField] private Vector2 cylinderAmount;
     [SerializeField] private Vector2 cylinderOffset;
     [SerializeField] private Vector2 upperPlaformeOffset;
