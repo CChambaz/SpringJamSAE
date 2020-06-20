@@ -494,7 +494,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1.5936e-41, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -710,10 +710,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a254edee5a8110e4ca76a234416019fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: 50
-  cylinderAmount: {x: 50, y: 50}
+  mapSize: 32
+  cylinderAmount: {x: 32, y: 48}
   cylinderOffset: {x: 1, y: 0.5}
-  upperPlaformeOffset: {x: 7, y: 10}
+  upperPlaformeOffset: {x: 0, y: 10}
+  spawnerGridSize: {x: 0, y: 0}
   propsManager: {fileID: 978640697}
   cylinderPrefab: {fileID: 2488488999697841277, guid: 71da25708b41bc945b9b6f64483db486,
     type: 3}
@@ -728,6 +729,7 @@ MonoBehaviour:
     type: 3}
   particlePrefab: {fileID: 9203642845470448638, guid: f708cd0006c11614ebfd3172de6a7b70,
     type: 3}
+  spawnerPrefab: {fileID: 0}
 --- !u!4 &1096889882
 Transform:
   m_ObjectHideFlags: 0
