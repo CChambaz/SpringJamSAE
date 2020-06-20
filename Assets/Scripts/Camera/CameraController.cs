@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Quaternion rotationOffset;
     private Transform target;
     private PlayerController player;
+    [SerializeField] private float widthLimit = 8.0f; 
 
     [Header("Shaking effect")]
     [SerializeField] private bool isReady = true;
@@ -55,7 +56,18 @@ public class CameraController : MonoBehaviour
         {
             if (!player.isDead)
             {
-                Vector3 newPosition = new Vector3(target.position.x, target.position.y);
+                float positionX = target.position.x;
+                if (target.position.x > widthLimit)
+                {
+                    positionX = widthLimit;
+                }
+
+                if (target.position.x < -widthLimit)
+                {
+                    positionX = -widthLimit;
+                }
+
+                Vector3 newPosition = new Vector3(positionX, target.position.y);
                 float power = 1.0f;
 
                 if (target.position.z <= LIMIT_Z)
