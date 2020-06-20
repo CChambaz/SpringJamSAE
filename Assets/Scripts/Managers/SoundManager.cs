@@ -5,19 +5,24 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager soundManagerInstance;
+    
     List<AudioSource> emitters = new List<AudioSource>();
 
+    public enum AudioMixerGroup
+    {
+        PLAYER,
+        ENVIRONMENT,
+        CONSTANT_NOISE
+    }
+    
     public enum SoundList
     {
-        WALK,
-        JUMP,
-        SWITCH,
-        APPEAR,
-        BOMB_MESH,
-        BOMB_EXPLOSION,
-        CAR_SOUND,
-        TRAIN,
-        BOAT,
+        RUN,
+        FIRE,
+        WOOD_IMPACT,
+        STEEL_IMPACT,
+        CONVEYORBELT,
         DEATH,
         MENU_SELECTION,
         MENU_VALIDATION,
@@ -41,34 +46,18 @@ public class SoundManager : MonoBehaviour
 
     MusicList currentMusicPlaying = MusicList.NONE;
 
-    List<AudioClip> listWalkSounds = new List<AudioClip>();
-    List<AudioClip> listCarSounds = new List<AudioClip>();
-
     [Header("VolumeSounds")]
     [SerializeField] AudioMixer audioMixer;
 
     [Header("Sounds")]
-    [SerializeField] AudioClip[] jumpClip;
-    [SerializeField] AudioClip switchClip;
-    [SerializeField] AudioClip appearClip;
-    [SerializeField] AudioClip bombMeshClip;
-    [SerializeField] AudioClip bombExplosionClip;
-    [SerializeField] AudioClip deathClip;
+    [SerializeField] AudioClip[] runClips;
+    [SerializeField] AudioClip fireClip;
+    [SerializeField] AudioClip[] woodImpactClip;
+    [SerializeField] AudioClip[] steelImpactClip;
+    [SerializeField] AudioClip conveyorBeltclip;
+    [SerializeField] AudioClip[] deathClips;
     [SerializeField] AudioClip menuSelection;
     [SerializeField] AudioClip menuValidation;
-
-    [SerializeField] AudioClip trainClip;
-    [SerializeField] AudioClip boatClip;
-
-    [Header("WalkClips")]
-    [SerializeField] AudioClip walkClip1;
-    [SerializeField] AudioClip walkClip2;
-    [SerializeField] AudioClip walkClip3;
-
-    [Header("CarClips")]
-    [SerializeField] AudioClip carSoundClip1;
-    [SerializeField] AudioClip carSoundClip2;
-    [SerializeField] AudioClip carSoundClip3;
 
     [Header("Musics")]
     [SerializeField] AudioClip menuMusicClip;
@@ -81,25 +70,16 @@ public class SoundManager : MonoBehaviour
     [SerializeField] int emitterNumber;
     [SerializeField] AudioSource musicEmitter;
 
-    public AudioClip SwitchClip
-    {
-        get
-        {
-            return switchClip;
-        }
-
-        set
-        {
-            switchClip = value;
-        }
-    }
-
-
     // Use this for initialization
     void Start ()
     {
         DontDestroyOnLoad(gameObject);
 
+        if (soundManagerInstance == null)
+            soundManagerInstance = this;
+        else
+            Destroy(this);
+        
         Random.InitState(Random.Range(0, int.MaxValue));
 
         for (int i = 0; i <= emitterNumber;i++)
@@ -108,16 +88,6 @@ public class SoundManager : MonoBehaviour
             emitters.Add(audioObject.GetComponent<AudioSource>());
             DontDestroyOnLoad(audioObject);
         }
-
-        listWalkSounds = new List<AudioClip>{walkClip1,
-                                    walkClip2,
-                                    walkClip3
-        };
-
-        listCarSounds = new List<AudioClip>{carSoundClip1,
-                                    carSoundClip2,
-                                    carSoundClip3
-        };
     }
 
     private void Update()
@@ -133,7 +103,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(SoundList sound, float timeToLoop = 0.0f)
+    public void PlaySound(SoundList sound, AudioMixerGroup group, float timeToLoop = 0.0f, bool infiniteLoop = false)
     {
         AudioSource emitterAvailable = null;
 
@@ -150,66 +120,36 @@ public class SoundManager : MonoBehaviour
             emitterAvailable.loop = false;
             switch (sound)
             {
-                case SoundList.WALK:
-                    int random = Random.Range(0, listWalkSounds.Count);
-                    emitterAvailable.clip = listWalkSounds[random];
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Footsteps")[0];
+                case SoundList.RUN:
+                    emitterAvailable.clip = runClips[Random.Range(0, runClips.Length - 1)];
                     break;
 
-                case SoundList.JUMP:
-                    emitterAvailable.clip = jumpClip[Random.Range(0, jumpClip.Length - 1)];
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Jump")[0];
+                case SoundList.FIRE:
+                    emitterAvailable.clip = fireClip;
                     break;
 
-                case SoundList.SWITCH:
-                    emitterAvailable.clip = switchClip;
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Switch")[0];
+                case SoundList.WOOD_IMPACT:
+                    emitterAvailable.clip = woodImpactClip[Random.Range(0, woodImpactClip.Length - 1)];
                     break;
 
-                case SoundList.APPEAR:
-                    emitterAvailable.clip = appearClip;
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Appear")[0];
+                case SoundList.STEEL_IMPACT:
+                    emitterAvailable.clip = steelImpactClip[Random.Range(0, steelImpactClip.Length - 1)];
                     break;
 
-                case SoundList.BOMB_MESH:
-                    emitterAvailable.clip = bombMeshClip;
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Mesh")[0];
+                case SoundList.CONVEYORBELT:
+                    emitterAvailable.clip = conveyorBeltclip;
                     break;
-
-                case SoundList.BOMB_EXPLOSION:
-                    emitterAvailable.clip = bombExplosionClip;
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Explosion")[0];
-                    break;
-
-                case SoundList.CAR_SOUND:
-                    int random2 = Random.Range(0, listCarSounds.Count);
-                    emitterAvailable.clip = listCarSounds[random2];
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Car")[0];
-                    break;
-
-                case SoundList.TRAIN:
-                    emitterAvailable.clip = trainClip;
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Train")[0];
-                    break;
-
-                case SoundList.BOAT:
-                    emitterAvailable.clip = boatClip;
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Boat")[0];
-                    break;
-
+                
                 case SoundList.DEATH:
-                    emitterAvailable.clip = deathClip;
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Death")[0];
+                    emitterAvailable.clip = deathClips[Random.Range(0, deathClips.Length - 1)];
                     break; 
 
                 case SoundList.MENU_SELECTION:
                     emitterAvailable.clip = menuSelection;
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Menu")[0];
                     break;
 
                 case SoundList.MENU_VALIDATION:
                     emitterAvailable.clip = menuValidation;
-                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Menu")[0];
                     break;
                 case SoundList.WIN_MUSIC:
                     musicEmitter.clip = winMusicClip;
@@ -224,12 +164,29 @@ public class SoundManager : MonoBehaviour
             if(timeToLoop > 0.0f)
             {
                 emitterAvailable.loop = true;
-                LoopedSound newLoopSound = new LoopedSound
+
+                if(!infiniteLoop)
                 {
-                    audioSource = emitterAvailable,
-                    timeUntilStop = Utilities.StartTimer(timeToLoop)
-                };
-                loopedSoundList.Add(newLoopSound);  
+                    LoopedSound newLoopSound = new LoopedSound
+                    {
+                        audioSource = emitterAvailable,
+                        timeUntilStop = Utilities.StartTimer(timeToLoop)
+                    };
+                    loopedSoundList.Add(newLoopSound);
+                }
+            }
+
+            switch (group)
+            {
+                case AudioMixerGroup.PLAYER:
+                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Player")[0];
+                    break;
+                case AudioMixerGroup.ENVIRONMENT:
+                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Environment")[0];
+                    break;
+                case AudioMixerGroup.CONSTANT_NOISE:
+                    emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("ConstantNoise")[0];
+                    break;
             }
             
             emitterAvailable.Play();

@@ -20,8 +20,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        animator.SetBool("dead", isDead);
+        if (isDead)
+            animator.SetBool("dead", isDead);
+        else
+        {
+            Move();
+        }
     }
 
     void Move()
@@ -34,5 +38,14 @@ public class PlayerController : MonoBehaviour
         movement *= playerSpeed;
         rigid.velocity = new Vector3(movement.x, rigid.velocity.y, movement.y);
         animator.SetFloat("speed", movement.y);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Finish")
+        {
+            isDead = true;
+            SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.DEATH, SoundManager.AudioMixerGroup.PLAYER);
+        }
     }
 }
