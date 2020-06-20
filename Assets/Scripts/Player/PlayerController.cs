@@ -87,7 +87,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetButtonDown("GeneratorInterraction"))
                 {
-                    Debug.Log("ConnectionTesterStatus");
                     other.gameObject.GetComponentInParent<Generator>().PlayerHasInterracted();
                     score -= 1;
                 }

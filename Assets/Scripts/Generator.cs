@@ -5,9 +5,17 @@ using UnityEngine;
 public class Generator : MonoBehaviour
 {
     [SerializeField] private GameObject detectionZone;
+    private GameManager gameManager;
+
+    void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.generators++;
+    }
+
     public void PlayerHasInterracted()
     {
+        gameManager.generators--;
         Destroy(detectionZone);
-        Debug.Log("dead");
     }
 }
