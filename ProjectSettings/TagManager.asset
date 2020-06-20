@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Convoyer
   - Item
+  - Generator
+  - PatternTrigger
   layers:
   - Default
   - TransparentFX
