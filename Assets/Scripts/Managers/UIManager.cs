@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
         victoryCanvas.gameObject.SetActive(false);
 
         Time.timeScale = 1;
+        SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.GAME_MUSIC);
     }
 
     // Update is called once per frame
