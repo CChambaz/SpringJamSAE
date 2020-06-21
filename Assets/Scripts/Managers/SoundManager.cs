@@ -82,21 +82,25 @@ public class SoundManager : MonoBehaviour
     [Header("Emmiters")]
     [SerializeField] GameObject emitterPrefab;
     [SerializeField] int emitterNumber;
-    [SerializeField] AudioSource musicEmitter;
+    private AudioSource musicEmitter;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(musicEmitter);
-
         if (soundManagerInstance == null)
             soundManagerInstance = this;
-        else
-            Destroy(this);
+        else if(soundManagerInstance != this)
+            Destroy(gameObject);
+        
+        DontDestroyOnLoad(gameObject);
         
         Random.InitState(Random.Range(0, int.MaxValue));
 
+        musicEmitter = Instantiate(emitterPrefab, emitterPrefab.transform.position, emitterPrefab.transform.rotation).GetComponent<AudioSource>();
+        musicEmitter.loop = true;
+        musicEmitter.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Music")[0];
+        DontDestroyOnLoad(musicEmitter);
+        
         for (int i = 0; i <= emitterNumber;i++)
         {
             GameObject audioObject = Instantiate(emitterPrefab, emitterPrefab.transform.position, emitterPrefab.transform.rotation);

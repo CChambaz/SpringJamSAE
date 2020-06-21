@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("dead", isDead);
         else
         {
-            if (hurricanUsage > 0 && Input.GetButton("Fire2"))
+            if (hurricanUsage > 0 && Input.GetButtonDown("Fire2"))
             {
                 playerState = PlayerState.HURRICANE;
                 animator.SetTrigger("hurricane");
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             if (score > 0)
             {
-                if (Input.GetButtonDown("GeneratorInterraction"))
+                if (Input.GetButtonDown("Fire1"))
                 {
                     other.gameObject.GetComponentInParent<Generator>().PlayerHasInterracted();
                     score -= 1;
