@@ -2917,6 +2917,7 @@ MonoBehaviour:
   hurricanText: {fileID: 1074073056}
   pauseCanvas: {fileID: 1233193610}
   defeatCanvas: {fileID: 289677340}
+  timeBeforeStop: 1
   victoryCanvas: {fileID: 1341014490}
 --- !u!1 &1233193605
 GameObject:

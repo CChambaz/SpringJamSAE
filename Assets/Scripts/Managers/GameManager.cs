@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (gameManagerInstance == null)
             gameManagerInstance = this;
@@ -33,7 +34,10 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         
         DontDestroyOnLoad(gameObject);
+    }
 
+    private void Start()
+    {
         if (SceneManager.GetActiveScene().name == "SampleScene")
             gameState = GameState.GAME;
     }
@@ -109,12 +113,14 @@ public class GameManager : MonoBehaviour
             case GameState.MENU:
                 SoundManager.soundManagerInstance.StopAllSounds();
                 SceneManager.LoadScene("Menu");
+                SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.MENU_MUSIC);
                 gameState = newState;
                 break;
             case GameState.GAME:
                 gameHasStarted = false;
                 stillNeedToDecelerateMovingObjects = false;
                 SceneManager.LoadScene("SampleScene");
+                SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.GAME_MUSIC);
                 gameState = newState;
                 break;
                 
