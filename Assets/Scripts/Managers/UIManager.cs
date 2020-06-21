@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
         if (player == null)
             player = FindObjectOfType<PlayerController>();
 
-        if(Input.GetButtonDown("Cancel"))
+        if(Input.GetButtonDown("Cancel") && !defeatCanvas.isActiveAndEnabled && !victoryCanvas.isActiveAndEnabled)
             SwitchState();
         
         scoreText.text = player.score.ToString();
@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour
             defeatJustStarted = true;
         }
         
-        if (defeatTimer >= timeBeforeStop)
+        if (defeatTimer >= timeBeforeStop && Time.timeScale != 0)
         {
             SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.DEFEAT_MUSIC);
             Time.timeScale = 0;

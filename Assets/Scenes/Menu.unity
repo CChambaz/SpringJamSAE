@@ -337,7 +337,7 @@ PrefabInstance:
         type: 3}
       propertyPath: musicEmitter
       value: 
-      objectReference: {fileID: 1151928670}
+      objectReference: {fileID: 0}
     - target: {fileID: 3072003313285794479, guid: a8d7bf55c5667524b934d214ed7d11bd,
         type: 3}
       propertyPath: m_LocalPosition.x

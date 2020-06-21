@@ -39,15 +39,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.GAME_MUSIC);
             gameState = GameState.GAME;
+        }
+        else
+        {
+            SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.MENU_MUSIC);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
         switch (gameState)
         {
             case GameState.GAME:
@@ -119,6 +123,7 @@ public class GameManager : MonoBehaviour
             case GameState.GAME:
                 gameHasStarted = false;
                 stillNeedToDecelerateMovingObjects = false;
+                Time.timeScale = 1;
                 SceneManager.LoadScene("SampleScene");
                 SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.GAME_MUSIC);
                 gameState = newState;
