@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
     private UIState state;
     private PlayerController player;
     private float defeatTimer = 0.0f;
-    private bool defeatJustStarted = false;
     
     // Start is called before the first frame update
     void Start()
@@ -39,6 +38,8 @@ public class UIManager : MonoBehaviour
         pauseCanvas.gameObject.SetActive(false);
         defeatCanvas.gameObject.SetActive(false);
         victoryCanvas.gameObject.SetActive(false);
+
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -62,11 +63,6 @@ public class UIManager : MonoBehaviour
 
     public void ShowDefeat()
     {
-        if (!defeatJustStarted)
-        {
-            defeatJustStarted = true;
-        }
-        
         if (defeatTimer >= timeBeforeStop && Time.timeScale != 0)
         {
             SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.DEFEAT_MUSIC);
