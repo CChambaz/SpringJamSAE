@@ -43,4 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9ba472680b6ef4c84c2201d15bcf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  propsSpeed: 6
+  propsDecelarationSpeed: 1
   generators: 0
+  gameHasStarted: 0
+  player: {fileID: 0}
