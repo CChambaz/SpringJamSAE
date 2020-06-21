@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
                 if (generators <= 0 && gameHasStarted)
                 {
                     FindObjectOfType<UIManager>().ShowVictory();
+                    player.StartDancing();
                     StopAllMovingObjects();
                 }   
                 
