@@ -1888,7 +1888,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6636008780419750539, guid: a1b60e284299073449343c94093ac6ca,
+  m_Sprite: {fileID: -480087691866862128, guid: b5a8ebbc33e060646b36356da22234c8,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2917,6 +2917,7 @@ MonoBehaviour:
   hurricanText: {fileID: 1074073056}
   pauseCanvas: {fileID: 1233193610}
   defeatCanvas: {fileID: 289677340}
+  timeBeforeStop: 1
   victoryCanvas: {fileID: 1341014490}
 --- !u!1 &1233193605
 GameObject:
