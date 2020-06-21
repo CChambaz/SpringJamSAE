@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
@@ -93,12 +95,16 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         
         DontDestroyOnLoad(gameObject);
-        
+    }
+
+    private void Start()
+    {
         Random.InitState(Random.Range(0, int.MaxValue));
 
         musicEmitter = Instantiate(emitterPrefab, emitterPrefab.transform.position, emitterPrefab.transform.rotation).GetComponent<AudioSource>();
         musicEmitter.loop = true;
         musicEmitter.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Music")[0];
+        PlayMusic(MusicList.MENU_MUSIC);
         DontDestroyOnLoad(musicEmitter);
         
         for (int i = 0; i <= emitterNumber;i++)

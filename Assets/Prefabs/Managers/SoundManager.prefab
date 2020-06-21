@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3072003313285794479}
   - component: {fileID: 3072003313285794478}
-  - component: {fileID: 3072003313285794472}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -74,21 +73,4 @@ MonoBehaviour:
   loseMusicClip: {fileID: 8300000, guid: 5edad3071848cf14094badc6914e3c95, type: 3}
   emitterPrefab: {fileID: 2654445477765768026, guid: 6ee24b3179562e043a8a8ce46c8041ad,
     type: 3}
-  emitterNumber: 50
---- !u!114 &3072003313285794472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3072003313285794477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d9ba472680b6ef4c84c2201d15bcf6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  propsSpeed: 0
-  propsDecelarationSpeed: 0
-  generators: 0
-  gameHasStarted: 0
-  player: {fileID: 0}
+  emitterNumber: 300
