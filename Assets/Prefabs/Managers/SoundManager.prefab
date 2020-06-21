@@ -66,8 +66,8 @@ MonoBehaviour:
   pickupClip: {fileID: 8300000, guid: 58f8b563327748c4092c09e4f7919687, type: 3}
   deathClips:
   - {fileID: 8300000, guid: dfb015c57211a4b4aab1f40ba8110fed, type: 3}
-  menuSelection: {fileID: 0}
-  menuValidation: {fileID: 0}
+  menuSelection: {fileID: 8300000, guid: 58ffdadd05723e342acbe38a18204654, type: 3}
+  menuValidation: {fileID: 8300000, guid: 4d2643964324a5a4bb6c5afb69a99b9c, type: 3}
   menuMusicClip: {fileID: 8300000, guid: 71c3da15cec4b3648a0075cc2ebe9cea, type: 3}
   gameMusicClip: {fileID: 8300000, guid: de6dee05c55b444469469c4c9bd9420c, type: 3}
   winMusicClip: {fileID: 8300000, guid: 217f7bf12d9600a489f20cffd1034a42, type: 3}
@@ -75,7 +75,6 @@ MonoBehaviour:
   emitterPrefab: {fileID: 2654445477765768026, guid: 6ee24b3179562e043a8a8ce46c8041ad,
     type: 3}
   emitterNumber: 50
-  musicEmitter: {fileID: 0}
 --- !u!114 &3072003313285794472
 MonoBehaviour:
   m_ObjectHideFlags: 0

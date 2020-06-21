@@ -92,6 +92,8 @@ public class UIManager : MonoBehaviour
     
     public void SwitchState()
     {
+        SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.MENU_VALIDATION, SoundManager.AudioMixerGroup.PLAYER);
+        
         switch (state)
         {
             case UIState.GAME:

@@ -276,6 +276,8 @@ public class SoundManager : MonoBehaviour
                     break;
             }
             currentMusicPlaying = music;
+            
+            musicEmitter.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Music")[0];
         }
     }
 }

@@ -24,11 +24,13 @@ public class MenuManager : MonoBehaviour
     
     public void StartGame()
     {
+        SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.MENU_VALIDATION, SoundManager.AudioMixerGroup.PLAYER);
         GameManager.gameManagerInstance.UpdateGameState(GameManager.GameState.GAME);
     }
 
     public void Help()
     {
+        SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.MENU_VALIDATION, SoundManager.AudioMixerGroup.PLAYER);
         menu.SetActive(false);
         helpMenu.SetActive(true);
     }
@@ -47,11 +49,13 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenu()
     {
+        SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.MENU_SELECTION, SoundManager.AudioMixerGroup.PLAYER);
         helpMenu.SetActive(false);
         menu.SetActive(true);
     }
     public void ExitGame()
     {
+        SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.MENU_VALIDATION, SoundManager.AudioMixerGroup.PLAYER);
         Application.Quit();
     }
 }
