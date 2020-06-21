@@ -40,6 +40,8 @@ public class SoundManager : MonoBehaviour
     {
         NONE,
         MENU_MUSIC,
+        DEFEAT_MUSIC,
+        WIN_MUSIC,
         GAME_MUSIC
     }
 
@@ -86,6 +88,7 @@ public class SoundManager : MonoBehaviour
     void Start ()
     {
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(musicEmitter);
 
         if (soundManagerInstance == null)
             soundManagerInstance = this;
@@ -254,6 +257,14 @@ public class SoundManager : MonoBehaviour
                     break;
                 case MusicList.GAME_MUSIC:
                     musicEmitter.clip = gameMusicClip;
+                    musicEmitter.Play();
+                    break;
+                case MusicList.DEFEAT_MUSIC:
+                    musicEmitter.clip = loseMusicClip;
+                    musicEmitter.Play();
+                    break;
+                case MusicList.WIN_MUSIC:
+                    musicEmitter.clip = winMusicClip;
                     musicEmitter.Play();
                     break;
                 case MusicList.NONE:
