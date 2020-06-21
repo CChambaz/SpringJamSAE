@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
         HURRICANE
     }
 
-    [SerializeField] private float propsZSpeed;
+    private float propsZSpeed;
     [SerializeField] private float playerSpeed;
     [SerializeField] private Animator animator;
     [SerializeField] public bool isDead = false;
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        propsZSpeed = GameManager.propsSpeedInstance;
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         GameManager.gameManagerInstance.player = this;

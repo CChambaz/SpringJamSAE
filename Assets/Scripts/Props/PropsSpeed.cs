@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class PropsSpeed : MonoBehaviour
 {
-    public float zSpeed = 3;
+    public float zSpeed;
     [SerializeField] private Rigidbody propRigidbody;
     [SerializeField] private float deleteY = 10f;
 
     private void Start()
     {
+        zSpeed = GameManager.propsSpeedInstance;
         propRigidbody = GetComponent<Rigidbody>();
     }
 

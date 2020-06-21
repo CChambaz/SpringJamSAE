@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManagerInstance;
-    
+
+    [SerializeField] private float propsSpeed;
+    public static float propsSpeedInstance;
+
     public enum GameState
     {
         MENU,
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        propsSpeedInstance = propsSpeed;
         if (gameManagerInstance == null)
             gameManagerInstance = this;
         else
