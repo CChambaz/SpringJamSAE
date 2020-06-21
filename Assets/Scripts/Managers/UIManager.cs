@@ -21,14 +21,18 @@ public class UIManager : MonoBehaviour
     [Header("Pause UI")] 
     [SerializeField] private CanvasGroup pauseCanvas;
     
-    [Header("Defeat UI")]
+    [Header("Defeat UI & parameters")]
     [SerializeField] private CanvasGroup defeatCanvas;
-    
+    [SerializeField] private float timeBeforeStop;
+
     [Header("Victory UI")]
     [SerializeField] private CanvasGroup victoryCanvas;
     
     private UIState state;
     private PlayerController player;
+    private float defeatTimer = 0.0f;
+    private bool defeatJustStarted = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -52,12 +56,27 @@ public class UIManager : MonoBehaviour
 
     public void ShowVictory()
     {
+        SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.WIN_MUSIC);
         victoryCanvas.gameObject.SetActive(true);
     }
 
     public void ShowDefeat()
     {
-        defeatCanvas.gameObject.SetActive(true);
+        if (!defeatJustStarted)
+        {
+            defeatJustStarted = true;
+        }
+        
+        if (defeatTimer >= timeBeforeStop)
+        {
+            SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.DEFEAT_MUSIC);
+            Time.timeScale = 0;
+            defeatCanvas.gameObject.SetActive(true);
+        }
+        else
+        {
+            defeatTimer += Time.deltaTime;
+        }
     }
     
     public void LoadMenu()

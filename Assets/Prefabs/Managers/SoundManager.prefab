@@ -68,10 +68,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dfb015c57211a4b4aab1f40ba8110fed, type: 3}
   menuSelection: {fileID: 0}
   menuValidation: {fileID: 0}
-  menuMusicClip: {fileID: 0}
-  gameMusicClip: {fileID: 0}
-  winMusicClip: {fileID: 0}
-  loseMusicClip: {fileID: 0}
+  menuMusicClip: {fileID: 8300000, guid: 71c3da15cec4b3648a0075cc2ebe9cea, type: 3}
+  gameMusicClip: {fileID: 8300000, guid: de6dee05c55b444469469c4c9bd9420c, type: 3}
+  winMusicClip: {fileID: 8300000, guid: 217f7bf12d9600a489f20cffd1034a42, type: 3}
+  loseMusicClip: {fileID: 8300000, guid: 5edad3071848cf14094badc6914e3c95, type: 3}
   emitterPrefab: {fileID: 2654445477765768026, guid: 6ee24b3179562e043a8a8ce46c8041ad,
     type: 3}
   emitterNumber: 50
@@ -88,5 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9ba472680b6ef4c84c2201d15bcf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  propsSpeed: 0
+  propsDecelarationSpeed: 0
   generators: 0
+  gameHasStarted: 0
   player: {fileID: 0}
