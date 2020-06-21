@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zSpeed: 6
   propRigidbody: {fileID: 9210164447927102273}
-  deleteY: 10
+  deleteY: 5
 --- !u!1 &5351942855252479833
 GameObject:
   m_ObjectHideFlags: 0

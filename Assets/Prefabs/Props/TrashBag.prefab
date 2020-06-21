@@ -64,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zSpeed: 6
   propRigidbody: {fileID: 7066602672047933518}
-  deleteY: 10
+  deleteY: 5
 --- !u!65 &2819760876196437249
 BoxCollider:
   m_ObjectHideFlags: 0

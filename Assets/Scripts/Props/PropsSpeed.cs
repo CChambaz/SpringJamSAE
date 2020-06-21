@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class PropsSpeed : MonoBehaviour
 {
-    public float zSpeed = 3;
+    public float zSpeed;
     [SerializeField] private Rigidbody propRigidbody;
     [SerializeField] private float deleteY = 10f;
 
     private void Start()
     {
+        GameManager.gameManagerInstance.RegisterMovingObject(this);
         propRigidbody = GetComponent<Rigidbody>();
     }
 
@@ -22,5 +23,10 @@ public class PropsSpeed : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.gameManagerInstance.UnregisterMovingObject(this);
     }
 }

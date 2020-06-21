@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3072003313285794477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3072003313285794479}
+  - component: {fileID: 3072003313285794478}
+  - component: {fileID: 3072003313285794472}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3072003313285794479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072003313285794477}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.821563, y: -11.00628, z: 99.27389}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3072003313285794478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072003313285794477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e14336ab2ad78438ef4a6f2afa4f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: d12f32f5969176e45b62b750a7d28af1, type: 2}
+  runClips: []
+  fireClip: {fileID: 8300000, guid: 57cb0afdecc8425448ec6d5796f0eb8d, type: 3}
+  woodImpactClip:
+  - {fileID: 8300000, guid: 2152c639c1f57db4d9ec2e955c950f11, type: 3}
+  - {fileID: 8300000, guid: 64f1686ccb98d2a4a829c3393b192994, type: 3}
+  woodDestroyClip: {fileID: 8300000, guid: 780f1b0c0cbf90640b78b3162f235731, type: 3}
+  steelImpactClip:
+  - {fileID: 8300000, guid: 0723380cc04a59b428e09d447e6c9c37, type: 3}
+  - {fileID: 8300000, guid: 3f3026b29ea99cd4bbecdfb557115a9f, type: 3}
+  trashImpactClip:
+  - {fileID: 8300000, guid: 55974694556fd964782734a25d9edc23, type: 3}
+  - {fileID: 8300000, guid: b463b07a859a86c4ab5c37f16463c247, type: 3}
+  - {fileID: 8300000, guid: 3993f71745a2b5f4689a1e43b3b69631, type: 3}
+  - {fileID: 8300000, guid: 44161772345a1324ca51427758d532ac, type: 3}
+  conveyorBeltclip: {fileID: 8300000, guid: 54f3bfa5435397a4eaef44bffe38db2f, type: 3}
+  geneDamageClip: {fileID: 8300000, guid: 13902262ab68f91449eeb4b40dbf6ba4, type: 3}
+  geneDestroyClip: {fileID: 8300000, guid: c8c3a3ee0f5690a41b4aee03dab21530, type: 3}
+  powerUpClip: {fileID: 8300000, guid: 0e55b62e612c518429c97667768b01ae, type: 3}
+  pickupClip: {fileID: 8300000, guid: 58f8b563327748c4092c09e4f7919687, type: 3}
+  deathClips:
+  - {fileID: 8300000, guid: dfb015c57211a4b4aab1f40ba8110fed, type: 3}
+  menuSelection: {fileID: 0}
+  menuValidation: {fileID: 0}
+  menuMusicClip: {fileID: 0}
+  gameMusicClip: {fileID: 0}
+  winMusicClip: {fileID: 0}
+  loseMusicClip: {fileID: 0}
+  emitterPrefab: {fileID: 2654445477765768026, guid: 6ee24b3179562e043a8a8ce46c8041ad,
+    type: 3}
+  emitterNumber: 50
+  musicEmitter: {fileID: 0}
+--- !u!114 &3072003313285794472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072003313285794477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9ba472680b6ef4c84c2201d15bcf6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generators: 0
+  player: {fileID: 0}
