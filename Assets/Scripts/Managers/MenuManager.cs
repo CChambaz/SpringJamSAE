@@ -18,7 +18,6 @@ public class MenuManager : MonoBehaviour
     
     public void StartGame()
     {
-        Debug.Log("StartGame");
         GameManager.gameManagerInstance.UpdateGameState(GameManager.GameState.GAME);
     }
 

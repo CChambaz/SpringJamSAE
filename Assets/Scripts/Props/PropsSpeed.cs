@@ -11,7 +11,7 @@ public class PropsSpeed : MonoBehaviour
 
     private void Start()
     {
-        zSpeed = GameManager.propsSpeedInstance;
+        GameManager.gameManagerInstance.RegisterMovingObject(this);
         propRigidbody = GetComponent<Rigidbody>();
     }
 
@@ -23,5 +23,10 @@ public class PropsSpeed : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.gameManagerInstance.UnregisterMovingObject(this);
     }
 }

@@ -11,7 +11,7 @@ public class Generator : MonoBehaviour
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = GameManager.gameManagerInstance;
         gameManager.generators++;
     }
 
