@@ -78,12 +78,14 @@ public class UIManager : MonoBehaviour
     
     public void LoadMenu()
     {
+        SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.MENU_VALIDATION, SoundManager.AudioMixerGroup.PLAYER);
         Time.timeScale = 1;
         GameManager.gameManagerInstance.UpdateGameState(GameManager.GameState.MENU);
     }
 
     public void Restart()
     {
+        SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.MENU_VALIDATION, SoundManager.AudioMixerGroup.PLAYER);
         Time.timeScale = 1;
         GameManager.gameManagerInstance.UpdateGameState(GameManager.GameState.GAME);
     }
