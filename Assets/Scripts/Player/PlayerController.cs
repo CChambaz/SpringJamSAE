@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
     [SerializeField] private Animator animator;
     [SerializeField] public bool isDead = false;
+    [SerializeField] public bool isWin = false;
     
     private Rigidbody rigid;
     private float currentSpeed = 0.0f;
@@ -33,6 +34,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isWin)
+        {
+            return;
+        }
+
         if (isDead)
             animator.SetBool("dead", isDead);
         else
@@ -93,6 +99,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void StartDancing()
+    {
+        isWin = true;
+        rigid.velocity = Vector3.zero;
+        animator.SetBool("isWinning", true);
     }
 
     private void OnCollisionEnter(Collision other)
