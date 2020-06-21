@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         if (gameManagerInstance == null)
             gameManagerInstance = this;
         else if(gameManagerInstance != this)
-            Destroy(this);
+            Destroy(gameObject);
         
         DontDestroyOnLoad(gameObject);
     }
@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
             case GameState.GAME:
                 gameHasStarted = false;
                 stillNeedToDecelerateMovingObjects = false;
+                generators = 0;
                 Time.timeScale = 1;
                 SceneManager.LoadScene("SampleScene");
                 SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.GAME_MUSIC);
