@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject helpMenu;
+    [SerializeField] private GameObject credits;
     //[SerializeField] private GameObject next;
     //[SerializeField] private GameObject back;
 
@@ -32,25 +33,23 @@ public class MenuManager : MonoBehaviour
     {
         SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.MENU_VALIDATION, SoundManager.AudioMixerGroup.PLAYER);
         menu.SetActive(false);
+        credits.SetActive(false);
         helpMenu.SetActive(true);
     }
 
-    /*public void HelpNext(GameObject current, GameObject next)
+    public void Credit()
     {
-        next.SetActive(true);
-        back.SetActive(true);
+        SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.MENU_VALIDATION, SoundManager.AudioMixerGroup.PLAYER);
+        menu.SetActive(false);
+        credits.SetActive(true);
+        helpMenu.SetActive(false);
     }
-
-    public void HelpBack(GameObject current, GameObject back)
-    {
-        next.SetActive(true);
-        back.SetActive(true);
-    }*/
 
     public void MainMenu()
     {
         SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.MENU_SELECTION, SoundManager.AudioMixerGroup.PLAYER);
         helpMenu.SetActive(false);
+        credits.SetActive(false);
         menu.SetActive(true);
     }
     public void ExitGame()
