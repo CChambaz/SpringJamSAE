@@ -27,7 +27,10 @@ public class Spawner : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "PatternTrigger")
+        if (other.tag == "PatternTrigger")
+        {
+            Destroy(other.gameObject);
             SpawnRandomPattern();
+        }
     }
 }

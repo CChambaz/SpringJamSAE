@@ -8,6 +8,7 @@ TagManager:
   - Item
   - Generator
   - PatternTrigger
+  - Hurrican
   layers:
   - Default
   - TransparentFX

@@ -15,13 +15,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject hurricaneCollider;
+    [SerializeField] private RotatingObject winRotatingCamera;
+    [SerializeField] public Transform cameraWinPosition;
     [SerializeField] public bool isDead = false;
     [SerializeField] public bool isWin = false;
-    [SerializeField] public bool isMenu = false;
     
     private Rigidbody rigid;
     private float currentSpeed = 0.0f;
-
+    private bool hasBeenMovedToWinPosition = false;
+    
     public int score = 0;
     public int hurricanUsage = 0;
     public PlayerState playerState = PlayerState.NONE;
@@ -31,13 +33,12 @@ public class PlayerController : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         GameManager.gameManagerInstance.player = this;
-        animator.SetBool("isMenu", isMenu);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isWin || isMenu)
+        if (isWin)
         {
             rigid.velocity = Vector3.zero;
             return;
@@ -112,6 +113,13 @@ public class PlayerController : MonoBehaviour
         isWin = true;
         rigid.velocity = Vector3.zero;
         animator.SetBool("isWinning", true);
+
+        if (!hasBeenMovedToWinPosition)
+        {
+            transform.position = GameManager.gameManagerInstance.winPosition;
+            winRotatingCamera.isRotating = true;
+            hasBeenMovedToWinPosition = true;
+        }
     }
 
     private void OnCollisionEnter(Collision other)

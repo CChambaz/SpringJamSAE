@@ -80,6 +80,8 @@ public class LevelGenerator : MonoBehaviour
         convoyerCenter.y += 1;
         Instantiate(playerPrefab, convoyerCenter, Quaternion.identity);
 
+        convoyerCenter.y += 1;
+        GameManager.gameManagerInstance.winPosition = convoyerCenter;
         GameManager.gameManagerInstance.gameHasStarted = true;
 
         //Todo Link player to camera

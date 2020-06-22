@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     
     private GameState gameState = GameState.MENU;
     public PlayerController player;
+    public Vector3 winPosition;
     
     // Start is called before the first frame update
     void Awake()
@@ -96,6 +97,14 @@ public class GameManager : MonoBehaviour
     public void RegisterRotatingObject(RotatingObject managedObject)
     {
         managedRotatingObjects.Add(managedObject);
+    }
+    
+    public void UnregisterRotatingObject(RotatingObject managedObject)
+    {
+        if (managedRotatingObjects.Contains(managedObject))
+        {
+            managedRotatingObjects.RemoveAt(managedRotatingObjects.FindIndex((x) => x == managedObject));
+        }
     }
 
     private void StopAllMovingObjects()

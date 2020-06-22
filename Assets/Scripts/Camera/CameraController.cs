@@ -19,6 +19,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float velocityShake;
     [SerializeField] private float distanceShake;
 
+    [SerializeField] private float winMoveSpeed;
+    [SerializeField] private float winRotationSpeed;
+    
     //params Effect
     private const float Z_ROT = 0.3f;
     private const float MAX_Y = 0.8f;
@@ -38,7 +41,7 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
         if (target == null)
@@ -54,7 +57,12 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            if (!player.isDead)
+            if (player.isWin)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, player.cameraWinPosition.position, winMoveSpeed);
+                transform.rotation = Quaternion.Slerp(transform.rotation, player.cameraWinPosition.rotation, winRotationSpeed);
+            }
+            else if (!player.isDead)
             {
                 float positionX = target.position.x;
                 if (target.position.x > widthLimit)

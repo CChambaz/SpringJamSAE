@@ -13,8 +13,9 @@ public class UIManager : MonoBehaviour
         END_GAME,
         PAUSE
     }
-    
+
     [Header("Player UI")] 
+    [SerializeField] private CanvasGroup uiCanvas;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text hurricanText;
 
@@ -59,6 +60,7 @@ public class UIManager : MonoBehaviour
     public void ShowVictory()
     {
         SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.WIN_MUSIC);
+        uiCanvas.gameObject.SetActive(false);
         victoryCanvas.gameObject.SetActive(true);
     }
 
@@ -68,6 +70,7 @@ public class UIManager : MonoBehaviour
         {
             SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.DEFEAT_MUSIC);
             Time.timeScale = 0;
+            uiCanvas.gameObject.SetActive(false);
             defeatCanvas.gameObject.SetActive(true);
         }
         else
