@@ -16,9 +16,6 @@ public class TrashBag : MonoBehaviour
         else if (other.gameObject.tag == "Player")
         {
             SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.TRASH_IMPACT, SoundManager.AudioMixerGroup.ENVIRONMENT);
-            
-            if(other.transform.GetComponent<PlayerController>().playerState == PlayerController.PlayerState.HURRICANE)
-                Destroy(gameObject);
         }
     }
 }

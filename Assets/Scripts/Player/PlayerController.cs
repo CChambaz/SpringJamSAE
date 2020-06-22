@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float propsZSpeed;
     [SerializeField] private float playerSpeed;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject hurricaneCollider;
     [SerializeField] public bool isDead = false;
     [SerializeField] public bool isWin = false;
     [SerializeField] public bool isMenu = false;
@@ -46,8 +47,9 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("dead", isDead);
         else
         {
-            if (hurricanUsage > 0 && Input.GetButtonDown("Fire2"))
+            if (playerState != PlayerState.HURRICANE && hurricanUsage > 0 && Input.GetButtonDown("Fire2"))
             {
+                hurricaneCollider.SetActive(true);
                 playerState = PlayerState.HURRICANE;
                 animator.SetTrigger("hurricane");
                 SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.POWER_UP, SoundManager.AudioMixerGroup.PLAYER);
@@ -76,6 +78,7 @@ public class PlayerController : MonoBehaviour
 
     private void EndHurricane()
     {
+        hurricaneCollider.SetActive(false);
         playerState = PlayerState.NONE;
     }
     
