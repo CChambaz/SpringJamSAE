@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Generator")
         {
-            if (score > 0)
+            if (score > 0 && other.GetComponent<Generator>().IsActive())
             {
                 if (Input.GetButtonDown("Fire1"))
                 {

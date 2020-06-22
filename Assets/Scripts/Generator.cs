@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
-    [SerializeField] private GameObject detectionZone;
     [SerializeField] private int life;
     private Animator anim;
     
@@ -18,6 +17,11 @@ public class Generator : MonoBehaviour
         anim.Play("Idle");
     }
 
+    public bool IsActive()
+    {
+        return life > 0;
+    }
+    
     public void PlayerHasInterracted()
     {
         life--;
@@ -31,7 +35,7 @@ public class Generator : MonoBehaviour
             anim.Play("Destroy");
             SoundManager.soundManagerInstance.PlaySound(SoundManager.SoundList.GENE_DESTROY, SoundManager.AudioMixerGroup.ENVIRONMENT);
             gameManager.generators--;
-            Destroy(detectionZone);
+            GetComponent<SphereCollider>().enabled = false;
         }
         else
         {
