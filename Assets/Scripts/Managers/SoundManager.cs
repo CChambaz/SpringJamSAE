@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager soundManagerInstance;
     
     List<AudioSource> emitters = new List<AudioSource>();
+    List<AudioSource> trashEmitters = new List<AudioSource>();
 
     public enum AudioMixerGroup
     {
@@ -84,6 +85,7 @@ public class SoundManager : MonoBehaviour
     [Header("Emmiters")]
     [SerializeField] GameObject emitterPrefab;
     [SerializeField] int emitterNumber;
+    [SerializeField] int trashEmitterNumber;
     private AudioSource musicEmitter;
 
     // Use this for initialization
@@ -113,6 +115,13 @@ public class SoundManager : MonoBehaviour
             emitters.Add(audioObject.GetComponent<AudioSource>());
             DontDestroyOnLoad(audioObject);
         }
+        
+        for (int i = 0; i <= trashEmitterNumber;i++)
+        {
+            GameObject audioObject = Instantiate(emitterPrefab, emitterPrefab.transform.position, emitterPrefab.transform.rotation);
+            trashEmitters.Add(audioObject.GetComponent<AudioSource>());
+            DontDestroyOnLoad(audioObject);
+        }
     }
 
     private void Update()
@@ -139,6 +148,27 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource emitterAvailable = null;
 
+        if (sound == SoundList.TRASH_IMPACT)
+        {
+            foreach(AudioSource emitter in trashEmitters)
+            {
+                if(!emitter.isPlaying)
+                {
+                    emitterAvailable = emitter;
+                }
+            }
+    
+            if (emitterAvailable != null)
+            {
+                emitterAvailable.loop = false;
+                emitterAvailable.clip = trashImpactClip[Random.Range(0, trashImpactClip.Length - 1)];
+                emitterAvailable.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Environment")[0];
+                emitterAvailable.Play();
+            }
+
+            return;
+        }
+        
         foreach(AudioSource emitter in emitters)
         {
             if(!emitter.isPlaying)
@@ -168,10 +198,6 @@ public class SoundManager : MonoBehaviour
                     emitterAvailable.clip = steelImpactClip[Random.Range(0, steelImpactClip.Length - 1)];
                     break;
 
-                case SoundList.TRASH_IMPACT:
-                    emitterAvailable.clip = trashImpactClip[Random.Range(0, trashImpactClip.Length - 1)];
-                    break;
-                
                 case SoundList.CONVEYORBELT:
                     emitterAvailable.clip = conveyorBeltclip;
                     break;

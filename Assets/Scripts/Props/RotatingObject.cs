@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class RotatingObject : MonoBehaviour
 {
-    [SerializeField] private Vector3 rotationSpeed;
+    [SerializeField] public Vector3 rotationSpeed;
 
     private Transform transform;
     
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.gameManagerInstance.RegisterRotatingObject(this);
         transform = GetComponent<Transform>();
     }
 

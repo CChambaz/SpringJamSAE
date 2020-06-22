@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   propsSpeed: 5
   propsDecelarationSpeed: 1
+  rotatingDecelarationSpeed: 2
   generators: 0
   gameHasStarted: 0
   player: {fileID: 0}

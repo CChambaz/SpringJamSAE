@@ -73,4 +73,5 @@ MonoBehaviour:
   loseMusicClip: {fileID: 8300000, guid: 5edad3071848cf14094badc6914e3c95, type: 3}
   emitterPrefab: {fileID: 2654445477765768026, guid: 6ee24b3179562e043a8a8ce46c8041ad,
     type: 3}
-  emitterNumber: 300
+  emitterNumber: 100
+  trashEmitterNumber: 25

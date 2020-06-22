@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float propsSpeed;
     [SerializeField] private float propsDecelarationSpeed;
+    [SerializeField] private float rotatingDecelarationSpeed;
 
     public enum GameState
     {
@@ -18,9 +19,10 @@ public class GameManager : MonoBehaviour
     }
     
     private List<PropsSpeed> managedObjects = new List<PropsSpeed>();
+    private List<RotatingObject> managedRotatingObjects = new List<RotatingObject>();
     public int generators;
     public bool gameHasStarted = false;    //Set this to true when the level is Generated
-    private bool stillNeedToDecelerateMovingObjects = false;
+    private bool stillNeedToDecelerateMovingObjects = true;
     
     private GameState gameState = GameState.MENU;
     public PlayerController player;
@@ -90,25 +92,39 @@ public class GameManager : MonoBehaviour
             managedObjects.RemoveAt(managedObjects.FindIndex((x) => x == managedObject));
         }
     }
+    
+    public void RegisterRotatingObject(RotatingObject managedObject)
+    {
+        managedRotatingObjects.Add(managedObject);
+    }
 
     private void StopAllMovingObjects()
     {
-        stillNeedToDecelerateMovingObjects = false;
-        for (int i = 0; i < managedObjects.Count; i++)
-        { 
-            managedObjects[i].zSpeed -= propsDecelarationSpeed;
+        if (stillNeedToDecelerateMovingObjects)
+        {
+            stillNeedToDecelerateMovingObjects = false;
+            for (int i = 0; i < managedObjects.Count; i++)
+            {
+                managedObjects[i].zSpeed -= propsDecelarationSpeed;
 
-            if (managedObjects[i].zSpeed <= 0.0f)
-                managedObjects[i].zSpeed = 0.0f;
+                if (managedObjects[i].zSpeed <= 0.0f)
+                    managedObjects[i].zSpeed = 0.0f;
+
+                if (managedObjects[i].zSpeed > 0.0f)
+                    stillNeedToDecelerateMovingObjects = true;
+            }
             
-            if (managedObjects[i].zSpeed > 0.0f)
-                stillNeedToDecelerateMovingObjects = true;
-        }
+            for (int i = 0; i < managedRotatingObjects.Count; i++)
+            {
+                managedRotatingObjects[i].rotationSpeed.y -= rotatingDecelarationSpeed;
 
-        player.propsZSpeed -= propsDecelarationSpeed;
-        
-        if (player.propsZSpeed <= 0.0f)
-            player.propsZSpeed = 0.0f;
+                if (managedRotatingObjects[i].rotationSpeed.y <= 0.0f)
+                    managedRotatingObjects[i].rotationSpeed.y = 0.0f;
+
+                if (managedRotatingObjects[i].rotationSpeed.magnitude > 0.0f)
+                    stillNeedToDecelerateMovingObjects = true;
+            }
+        }
     }
     
     public void UpdateGameState(GameState newState)
@@ -123,8 +139,10 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GAME:
                 gameHasStarted = false;
-                stillNeedToDecelerateMovingObjects = false;
+                stillNeedToDecelerateMovingObjects = true;
                 generators = 0;
+                managedObjects.Clear();
+                managedRotatingObjects.Clear();
                 Time.timeScale = 1;
                 SceneManager.LoadScene("SampleScene");
                 SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.GAME_MUSIC);
