@@ -233,9 +233,9 @@ RectTransform:
   m_Father: {fileID: 839950640}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -526.0794, y: 133.99994}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -476.0794, y: 83.99994}
   m_SizeDelta: {x: 1182.999, y: 299.69897}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &51389601
@@ -734,9 +734,9 @@ RectTransform:
   m_Father: {fileID: 794685366}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -470, y: -345}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -420, y: -295}
   m_SizeDelta: {x: 1272.3286, y: 308.27026}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &687418213
@@ -1063,9 +1063,9 @@ RectTransform:
   m_Father: {fileID: 459007785}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -378.77, y: -68.376}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -328.77, y: -118.376}
   m_SizeDelta: {x: 1478.3562, y: 236.75262}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &804655324
@@ -2032,8 +2032,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Collect beers to unleash the hurrican kick to destroy wood boxes and trash
-    bags
+  m_Text: Collect beers to use the hurrican kick with the right click to destroy
+    boxes and trash bags
 --- !u!222 &1108128833
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2287,9 +2287,9 @@ RectTransform:
   m_Father: {fileID: 839950640}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -754, y: -395}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -704, y: -445}
   m_SizeDelta: {x: 727.2993, y: 233.10156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1167124196
@@ -2364,9 +2364,9 @@ RectTransform:
   m_Father: {fileID: 839950640}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -644.47943, y: -143.70006}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -594.47943, y: -193.70006}
   m_SizeDelta: {x: 946.34033, y: 233.10156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1213219139
@@ -3139,9 +3139,9 @@ RectTransform:
   m_Father: {fileID: 459007785}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -451.7, y: 184.7}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -401.7, y: 134.7}
   m_SizeDelta: {x: 1332.5092, y: 187.36789}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1597878802
@@ -3597,9 +3597,9 @@ RectTransform:
   m_Father: {fileID: 459007785}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -378.77, y: -349}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -328.77, y: -399}
   m_SizeDelta: {x: 1478.3562, y: 236.75262}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1809442937

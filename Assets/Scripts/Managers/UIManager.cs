@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
         if (player == null)
             player = FindObjectOfType<PlayerController>();
 
-        if(Input.GetButtonDown("Cancel") && !defeatCanvas.isActiveAndEnabled && !victoryCanvas.isActiveAndEnabled)
+        if(Input.GetButtonDown("Cancel") && !player.isDead && !player.isWin)
             SwitchState();
         
         scoreText.text = player.score.ToString();
@@ -68,6 +68,7 @@ public class UIManager : MonoBehaviour
     {
         if (defeatTimer >= timeBeforeStop && Time.timeScale != 0)
         {
+            GameManager.gameManagerInstance.StopAllRotatingObjects();
             SoundManager.soundManagerInstance.PlayMusic(SoundManager.MusicList.DEFEAT_MUSIC);
             Time.timeScale = 0;
             uiCanvas.gameObject.SetActive(false);

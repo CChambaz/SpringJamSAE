@@ -135,6 +135,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void StopAllRotatingObjects()
+    {
+        for (int i = 0; i < managedRotatingObjects.Count; i++)
+        {
+            managedRotatingObjects[i].rotationSpeed.y = 0.0f;
+        }
+    }
     
     public void UpdateGameState(GameState newState)
     {
